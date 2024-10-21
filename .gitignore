@@ -1,0 +1,8 @@
+
+.venv
+client/node_modules
+server/modules/prac_sqlachemy
+server/modules/main
+server/py 
+server/project
+server/add_projects
