@@ -1,0 +1,121 @@
+/* Container for the entire product list */
+.product_list.container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    /* Responsive grid for different screen sizes */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Styling for individual items */
+.product_list .item {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.product_list .item:hover {
+    transform: scale(1.02);
+}
+
+/* Thumbnail image styling */
+.product_list .thumbnail {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Description styling */
+.product_list .dec {
+    text-align: center;
+}
+
+/* Price styling */
+.product_list .dec h4 {
+    font-size: 1.2em;
+    color: #fa0404;
+    margin-top: 8px;
+}
+
+.product_list .sold-out {
+    display: none;
+}
+.product_list .item:hover {
+    .sold-out {
+        position: absolute;
+        margin-top: 35px;
+        left: 25%;
+        display: inline;
+    }
+}
+
+.product_list .dec sup {
+    font-size: 0.8em;
+}
+
+/* Add-to-cart button */
+#add-to-cart {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 0.9em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+/* Wishlist icon styling */
+.wishlist-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+.item:hover .wishlist-icon {
+    display: block;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+    .product_list .dec h4 {
+        font-size: 1em;
+    }
+
+    #add-to-cart {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 480px) {
+    .product_list.container {
+        padding: 10px;
+    }
+
+    .product_list .item {
+        padding: 10px;
+    }
+
+    .product_list .dec h4 {
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Base styles for the header */
+        .main_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(227, 245, 246);
+            padding: 10px 20px;
+            width: 100%;
+            font-family: "Interstate Regular", sans-serif;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* Logo styling */
+        .nav-logo>p {
+            font-size: 24px;
+            font-weight: 600;
+            color: snow;
+        }
+
+        /* Desktop navigation menu */
+        .main_header>ul {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        /* Menu item styling */
+        .main_header>ul>li {
+            font-weight: bold;
+        }
+
+        .main_header>ul>li>a {
+            text-decoration: none;
+            color: rgb(63, 63, 63);
+        }
+
+        .main_header>ul>li>a:hover,
+        .main_header>ul>li>a:focus {
+            text-decoration: underline;
+            font-weight: bolder;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .main_header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            /* Hide the nav links by default on mobile and show the hamburger */
+            .main_header>ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main_header>p {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            /* Display nav when toggled on */
+            .main_header>ul.show {
+                display: flex;
+            }
+
+            .main_header>p.show {
+                display: flex;
+            }
+
+            /* Hamburger icon styling */
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                font-size: 24px;
+                color: rgb(63, 63, 63);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main_header">
+
+        <!-- Hamburger menu icon -->
+        <div style="display: flex; justify-content: space-between;">
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <div class="nav-log">
+                Logo
+            </div>
+        </div>
+        <!-- Navigation menu -->
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+    <script>function toggleMenu() {
+            document.querySelector('.main_header > ul').classList.toggle('show');
+        }
+    </script>
+
+</body>
+
+</html>

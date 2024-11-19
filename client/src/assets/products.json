@@ -1,0 +1,67 @@
+[
+    {
+        "id": "h1",
+        "title":" LD01 LOUNGE CHAIR",
+        "price": 200,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/L05t3hF/1.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h2",
+        "title":" LD02 LOUNGE CHAIR",
+        "price": 250,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/3k9jtQF/2.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h3",
+        "title":" LD03 LOUNGE CHAIR",
+        "price": 290,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/fCRrnLV/3.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h4",
+        "title":" LD04 LOUNGE CHAIR",
+        "price": 200,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/1ZT7RdT/4.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h5",
+        "title":" LD05 LOUNGE CHAIR",
+        "price": 300,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/9VsffTJ/5.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h6",
+        "title":" LD06 LOUNGE CHAIR",
+        "price": 200,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/FsM94xP/6.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h7",
+        "title":" LD07 LOUNGE CHAIR",
+        "price": 200,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/WNrBwJZ/7.png",
+        "description": "proper stuff"
+    },
+    {
+        "id": "h8",
+        "title":" LD08 LOUNGE CHAIR",
+        "price": 200,
+        "category": "home-and-living",
+        "image": "https://i.ibb.co/DzVdQGB/8.png",
+        "description": "proper stuff"
+    }
+
+]

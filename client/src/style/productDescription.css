@@ -1,0 +1,131 @@
+/* Base styling for product container */
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+/* Product image styling */
+.product-image {
+    flex: 1;
+    max-width: 400px;
+    padding: 10px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Product description styling */
+.product-description {
+    flex: 2;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #cf008c;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Add-to-cart button styling */
+.add-to-cart-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #a4d0ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #aac7e7;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    /* Stack image and description vertically */
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    /* Center the image and set a smaller width */
+    .product-image {
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    /* Adjust description margin and center text */
+    .product-description {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    /* Responsive font sizes */
+    .product-title {
+        font-size: 1.5rem;
+    }
+
+    .product-text {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.2rem;
+    }
+
+    .add-to-cart-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .product-title {
+        font-size: 1.25rem;
+    }
+
+    .product-text {
+        font-size: 0.85rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .add-to-cart-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,89 @@
+/* Base styles for the checkout component */
+.checkout {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.contact-info, .cart-summary {
+    width: 48%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    color: #4a4a4a;
+}
+
+.contact-info p, .cart-summary p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.contact-info button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.contact-info button:hover {
+    background-color: #45a049;
+}
+
+.address-form input,
+.address-form select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.address-form label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    font-size: 14px;
+}
+
+.address-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.address-form button:hover {
+    background-color: #0056b3;
+}
+
+.cart-summary .subtotal-price,
+.cart-summary .savings-price,
+.cart-summary .delivery-fee,
+.cart-summary .total-price {
+    font-weight: bold;
+}
+
+.cart-summary .total-price {
+    font-size: 20px;
+    color: #d9534f;
+}
+
+button {
+    cursor: pointer;
+}
