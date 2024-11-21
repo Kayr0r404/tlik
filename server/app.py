@@ -4,9 +4,10 @@ from api.v1.views import app_views_bp
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from datetime import timedelta
+import os
 
 app = Flask(__name__)
-app.config["JWT_SECRET_KEY"] = "your_jwt_secret_key"  # Change this in production!
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=24)
 initialize_bcrypt(app)
 jwt = JWTManager(app)
