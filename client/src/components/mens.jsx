@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import { ProductList } from "./ProductList";
-import { useParams, useNavigate } from "react-router-dom";
+import { useSearchParams, } from "react-router-dom";
 import Pagination from "./Pagination";
 
 export default function Men() {
-    const { page = 1 } = useParams();
-    const [currentPage, setCurrentPage] = useState(Number(page));
+    const [searchParams, setSearchParams] = useSearchParams();
+    
+    const currentPage = Number(searchParams.get("page")) || 1; // Default to page 1 if not provided
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [paginationNumbers, setPaginationNumbers] = useState([]);
-    const navigate = useNavigate();
 
     const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber); // Update state
-        navigate(`/Mens/${pageNumber}`); // Update URL
+        setSearchParams({ page: pageNumber }); // Update the query parameter
     };
 
     useEffect(() => {
         setLoading(true); // Reset loading state
-        fetch(`/Mens/${currentPage}`)
+        fetch(`/Mens?page=${currentPage}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -47,10 +46,11 @@ export default function Men() {
 
     return (
         <div>
-            <h1>Men's Watches</h1>
+            <h1>Mans Watches</h1>
             <ProductList products={data} />
             <div style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
                 <button
+                    style={{ backgroundColor: 'transparent' }}
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(currentPage - 1)}
                 >
@@ -61,6 +61,7 @@ export default function Men() {
                     onPageChange={handlePageChange}
                 />
                 <button
+                    style={{ backgroundColor: 'transparent' }}
                     disabled={currentPage === paginationNumbers.length}
                     onClick={() => handlePageChange(currentPage + 1)}
                 >
