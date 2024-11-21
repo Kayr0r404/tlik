@@ -1,7 +1,7 @@
 from api.v1.views import app_views_bp
 from api.v1.views import storage, session
 from models.products import Product
-from flask import jsonify
+from flask import jsonify, request
 
 
 @app_views_bp.route("/products", strict_slashes=False, methods=["GET", "POST"])
@@ -35,8 +35,10 @@ from flask import jsonify
 from math import ceil
 
 
-@app_views_bp.get("/Mens/<int:page>", strict_slashes=False)
+@app_views_bp.get("/Mens", strict_slashes=False)
 def mens(page=1, per_page=12):
+    page = request.args.get("page", default=1, type=int)
+    per_page = request.args.get("per_page", default=12, type=int)
     # Fetch all products and filter for men's clothing
     data = [value.to_dict() for value in storage.all("Product")]
     mens_clothing = [
@@ -79,8 +81,10 @@ def home_and_living():
     return jsonify(mens_clothing)
 
 
-@app_views_bp.get("/Women/<int:page>")
-def Women(page, per_page=12):
+@app_views_bp.get("/Women")
+def Women(page=1, per_page=12):
+    page = request.args.get("page", default=1, type=int)
+    per_page = request.args.get("per_page", default=12, type=int)
     # Fetch all products and filter for men's clothing
     data = [value.to_dict() for value in storage.all("Product")]
     mens_clothing = [
