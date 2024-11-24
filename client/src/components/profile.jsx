@@ -60,7 +60,7 @@ const Profile = () => {
             orders.map((order, index) => (
               <tr key={order.order_number}>
                 <td>{index + 1}</td>
-                <Link to={`/${order.order_number}`} style={{textDecoration: 'none',}}><td>{order.order_number}</td></Link>
+                <td><Link to={`/${order.order_number}`} style={{textDecoration: 'none',}}>{order.order_number}</Link> </td>
                 <td>{order.date}</td>
                 <td>Paid</td>
                 <td>{order.order_status}</td>
