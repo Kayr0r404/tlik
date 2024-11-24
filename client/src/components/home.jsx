@@ -32,7 +32,7 @@ export default function Home() {
             <div className="feature">
                 <img src={shipping} alt="" className="featureIcon" />
                 <span className="featureTitle">FREE SHIPPING</span>
-                <span className="featureDesc">Free worldwide shipping on all orders.</span>
+                <span className="featureDesc">Free shipping on all orders.</span>
             </div>
             <div className="feature">
                 <img className="featureIcon" src={returns} alt="" />

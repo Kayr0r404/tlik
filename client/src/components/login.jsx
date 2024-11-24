@@ -5,7 +5,7 @@ import Profile from './profile';
 import '../style/login.css';
 
 function Login() {
-  const { login, setEmail, setPassword, email, password, isAuthenticated } = useContext(AuthContext);
+  const { login, setEmail, setPassword, email, password, isAuthenticated, responseStatus} = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ function Login() {
       ) : (
         <div className="mainContainer">
           <h2>Login</h2>
+          {responseStatus === 401 ? <h5 style={{color: 'red'}}>Incorrect email or password.</h5> : ''}
           <form className="login" onSubmit={handleSubmit}>
             <input 
               type="email" 

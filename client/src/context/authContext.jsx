@@ -8,27 +8,44 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [responseStatus, setResponseStatus] = useState(-1);
 
     // Function to log in the user
     const login = async (email, password) => {
         try {
-            const response = await axios.post('/login', { email, password });
-            const token = response.data['access_token'];
-            const userData = response.data['user_data'];
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email, password: password
+                })
+            });
 
-            // Save token and user data to localStorage
-            localStorage.setItem('token', token);
-            localStorage.setItem('userData', JSON.stringify(userData));
+            setResponseStatus(response.status);
 
-            // Update state
-            setUser(userData);
-            setIsAuthenticated(true);
-            // Sync cart if it contains items
-            if (localStorage.getItem('cartItems') && localStorage.getItem('cartItems').length !== 0) {
-                await syncCartWithServer();
+            if (response.ok) {
+                const data = await response.json();
+                // Save token and user data to localStorage
+                localStorage.setItem('token', data['access_token']);
+                localStorage.setItem('userData', JSON.stringify(data['user_data']));
+                // Update User state
+                setUser(data['user_data']);
+                setIsAuthenticated(true);
+
+                // Sync cart if it contains items
+                if (localStorage.getItem('cartItems') && localStorage.getItem('cartItems').length !== 0) {
+                    await syncCartWithServer();
+                }
             }
+            else {
+                return false;
+            }
+
             console.log(isAuthenticated)
             console.log('Logged in successfully!');
+            return true;
         } catch (error) {
             console.error("Error logging in", error);
         }
@@ -103,7 +120,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, login, logout, email, setEmail, password, setPassword, syncCartWithServer, createProfile }}>
+        <AuthContext.Provider value={{ user, isAuthenticated, login, logout, email, setEmail,
+        password, setPassword, syncCartWithServer, createProfile, responseStatus}}>
             {children}
         </AuthContext.Provider>
     );

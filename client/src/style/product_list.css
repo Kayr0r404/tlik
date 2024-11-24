@@ -46,6 +46,11 @@
     margin-top: 8px;
 }
 
+.dec h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .product_list .sold-out {
     display: none;
 }

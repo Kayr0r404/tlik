@@ -23,9 +23,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path=':category_name/:id' element={<ProductDescription />} />
-        <Route path="/Mens/:page" element={<Men />} />
+        <Route path="/Mens" element={<Men />} />
         <Route path='Home + Living' element={<HomeandLiving />}/>
-        <Route path='Women/:page' element={<Women />}/>
+        <Route path='Women' element={<Women />}/>
         <Route path='wishlist' element={<WishList/>}/>
         <Route path='cart' element={<Cart />} />
         <Route path='checkout' element={<CheckoutForm />}/>

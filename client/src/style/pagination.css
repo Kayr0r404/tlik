@@ -14,7 +14,7 @@
   
   
   .pagination button {
-  
+    border: none;
     padding: 10px;
-  
+    background-color: transparent;
   }
