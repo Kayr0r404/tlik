@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@stripe/stripe-js": "^4.8.0",
+    "bulma": "^1.0.2"
+  }
+}
