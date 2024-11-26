@@ -26,7 +26,7 @@ const AddressForm = () => {
                 });
 
                 if (response.ok) {
-                    const addressData = await response.json(); // await the JSON response
+                    const addressData = await response.json();
                     
                     console.log('Fetched Address:', addressData);
                     setCity(addressData.full_address.city);

@@ -6,18 +6,18 @@ import Pagination from "./Pagination";
 export default function Men() {
     const [searchParams, setSearchParams] = useSearchParams();
     
-    const currentPage = Number(searchParams.get("page")) || 1; // Default to page 1 if not provided
+    const currentPage = Number(searchParams.get("page")) || 1;
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
     const handlePageChange = (pageNumber) => {
-        setSearchParams({ page: pageNumber }); // Update the query parameter
+        setSearchParams({ page: pageNumber });
     };
 
     useEffect(() => {
-        setLoading(true); // Reset loading state
+        setLoading(true);
         fetch(`/Mens?page=${currentPage}`)
             .then(response => {
                 if (!response.ok) {

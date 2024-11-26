@@ -69,7 +69,6 @@ def add_to_cart():
             if cart_item:
                 cart_item.quantity += item["quantity"]
             else:
-
                 # Create a new CartItem object and add it to the session
                 cart_item = CartItem(
                     quantity=item["quantity"], product=product, user=user
@@ -162,7 +161,7 @@ def delete_cart():
         for item in cart_items:
             session.delete(item)  # Properly delete from the session
 
-        storage.save()  # Commit the transaction to persist the changes
+        storage.save()
 
         return jsonify({"msg": "Cart deleted successfully"}), 200
 

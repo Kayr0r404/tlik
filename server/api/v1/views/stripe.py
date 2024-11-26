@@ -6,13 +6,10 @@ from models.products import Product
 from models.order import Order
 from flask import request, jsonify, make_response
 import stripe, os, json
-from dotenv import load_dotenv
 from flask_jwt_extended import (
     jwt_required,
     get_jwt_identity,
 )
-
-load_dotenv()
 
 stripe.api_key = os.getenv("STRIPE_API_KEY")
 web_hook_secret_key = os.getenv("WEB_HOOK_SECRETE_KEY")

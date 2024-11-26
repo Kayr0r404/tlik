@@ -61,8 +61,8 @@ function CheckoutForm() {
             });
 
             if (response.ok) {
-                const responseData = await response.json(); // Wait for the JSON response
-                setData(responseData);  // Store the response data in state
+                const responseData = await response.json();
+                setData(responseData);
             } else {
                 console.error('Error occurred while registering address');
             }

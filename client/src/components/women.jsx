@@ -13,11 +13,11 @@ export default function Women() {
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
     const handlePageChange = (pageNumber) => {
-        setSearchParams({ page: pageNumber }); // Update the query parameter
+        setSearchParams({ page: pageNumber });
     };
 
     useEffect(() => {
-        setLoading(true); // Reset loading state
+        setLoading(true);
         fetch(`/Women?page=${currentPage}`)
             .then(response => {
                 if (!response.ok) {

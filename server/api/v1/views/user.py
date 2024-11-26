@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import (
     create_access_token,
 )
+from datetime import datetime
 
 
 # Initialize Bcrypt and DBStorage
@@ -38,6 +39,7 @@ def login():
             "last_name": user.last_name,
         }
     )
+    token_creation_time = datetime.now()
 
     return (
         jsonify(
@@ -49,6 +51,7 @@ def login():
                     "last_name": user.last_name,
                     "email": user.email,
                 },
+                "token_creation_time": token_creation_time,
             }
         ),
         200,

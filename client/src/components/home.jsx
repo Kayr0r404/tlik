@@ -16,12 +16,12 @@ export default function Home() {
 
         <div className="container">
         <div className="section">
-            <Link to={'Women'}> <img src={women} alt="Women" />
-            <div className="label">Women</div></Link>
-        </div>
-        <div className="section">
             <Link to={'Mens'}> <img src={men} alt="Men" />
             <div className="label">Men</div></Link>
+        </div>
+        <div className="section">
+            <Link to={'Women'}> <img src={women} alt="Women" />
+            <div className="label">Women</div></Link>
         </div>
         <div className="section">
             <Link to={'Home + Living'}><img src={living} alt="Home + Living" />

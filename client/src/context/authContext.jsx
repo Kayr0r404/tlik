@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, } from 'react';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 export const AuthContext = createContext();
 
@@ -38,14 +39,10 @@ export const AuthProvider = ({ children }) => {
                 if (localStorage.getItem('cartItems') && localStorage.getItem('cartItems').length !== 0) {
                     await syncCartWithServer();
                 }
+                console.log(data)
             }
-            else {
-                return false;
-            }
-
             console.log(isAuthenticated)
             console.log('Logged in successfully!');
-            return true;
         } catch (error) {
             console.error("Error logging in", error);
         }
@@ -76,8 +73,6 @@ export const AuthProvider = ({ children }) => {
         try {
           const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       
-          // Format cart items as needed (e.g., create an array of objects)
-      
           const response = await fetch('/cart', {
             method: 'POST',
             headers: {
@@ -102,12 +97,25 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         const storedUserData = localStorage.getItem('userData');
-
-        if (storedToken && storedUserData) {
-            setIsAuthenticated(true);
-            setUser(JSON.parse(storedUserData));
+    
+        if (storedToken) {
+            if (isTokenExpired(storedToken)) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userData');
+                localStorage.removeItem('cartItems');
+                setUser(null);
+                setIsAuthenticated(false);
+                console.log('expired');
+            } else {
+                setIsAuthenticated(true);
+                setUser(JSON.parse(storedUserData));
+            }
+        } else {
+            setIsAuthenticated(false);
+            setUser(null);
         }
     }, []);
+    
 
     // Function to log out the user
     const logout = () => {
@@ -119,9 +127,21 @@ export const AuthProvider = ({ children }) => {
         console.log('Logged out');
     };
 
+    const isTokenExpired = (token) => {
+        if (!token) return true;
+        try {
+          const decodedToken = jwtDecode(token);
+          const currentTime = Date.now() / 1000;
+          return decodedToken.exp < currentTime;
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return true;
+        }
+      };
+
     return (
         <AuthContext.Provider value={{ user, isAuthenticated, login, logout, email, setEmail,
-        password, setPassword, syncCartWithServer, createProfile, responseStatus}}>
+        password, setPassword, syncCartWithServer, createProfile, responseStatus, isTokenExpired}}>
             {children}
         </AuthContext.Provider>
     );

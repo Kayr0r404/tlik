@@ -16,7 +16,7 @@ useEffect(() => {
         }
       })
       .then(response => {
-        const cartItems = response.data; // Assuming your response data is the cart items
+        const cartItems = response.data;
   
         // Fetch product details for each cart item
         const productPromises = cartItems.map(item => 
@@ -27,7 +27,7 @@ useEffect(() => {
           })
           .catch(error => {
             console.error(`${error} Failed to fetch product ${item.product_id}`);
-            return null; // Return null if fetching the product fails
+            return null;
           })
         );
         
@@ -104,7 +104,7 @@ const removeFromCart = async (item) => {
     if (cartItem) {
       if (cartItem.quantity === 1) {
         if (isAuthenticated) {
-            const response = await fetch(`/delete-cart/${item.id}`, {
+            await fetch(`/delete-cart/${item.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const removeFromCart = async (item) => {
         setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
       } else {
         if (isAuthenticated) {
-            const response = await fetch(`/cart/${item.id}`, {
+            await fetch(`/cart/${item.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -144,19 +144,18 @@ const deleteItemInCart = async (item) => {
       try {
         // Send DELETE request to the server
         const response = await fetch(`/cart/${item.id}`, {
-          method: 'DELETE', // Fixed typo
+          method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Proper authorization header
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ id: item.id, product_id: item.product_id }) // Send required data
+          body: JSON.stringify({ id: item.id, product_id: item.product_id })
         });
   
         if (!response.ok) {
           throw new Error('Error deleting cart item');
         }
   
-        // No need to parse response if it's a DELETE request, unless your server sends something back.
         console.log('Cart item deleted successfully');
   
         // Update the UI after successful deletion
@@ -175,7 +174,7 @@ const clearCart =async () => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Proper authorization header
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
         })
     }

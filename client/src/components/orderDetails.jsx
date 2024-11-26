@@ -32,11 +32,9 @@ const OrderDetails = () => {
       <table className="profile-table">
         <thead>
           <tr>
-            {/* <th>#</th> */}
             <th>PRODUCT</th>
             <th>PRICE</th>
             <th>QUANTITY</th>
-            {/* <th>FULFILLMENT STATUS</th> */}
             <th>TOTAL</th>
           </tr>
         </thead>
@@ -44,11 +42,9 @@ const OrderDetails = () => {
           {order ? (
               order.map(order => (
                 <tr>
-                {/* <td>{index + 1}</td> */}
                 <td>{order.product}</td>
                 <td>{order.price}</td>
                 <td>{order.quantity}</td>
-                {/* <td>{order.order_status}</td> */}
                 <td>{`R ${order.price * order.quantity}`}</td>
               </tr>
               ))

@@ -3,6 +3,7 @@ from api.v1.views import app_views_bp, session, storage
 from models.order import Order
 from models.order_items import OrderItems
 from flask import jsonify
+from sqlalchemy import asc
 from flask_jwt_extended import (
     jwt_required,
     get_jwt_identity,
@@ -13,7 +14,12 @@ from flask_jwt_extended import (
 @jwt_required()
 def get_orders():
     user_identity = get_jwt_identity()
-    user_orders = session.query(Order).filter_by(user_id=user_identity["id"]).all()
+    user_orders = (
+        session.query(Order)
+        .filter_by(user_id=user_identity["id"])
+        .order_by(Order.created_at.asc())  # Order by date in descending order
+        .all()
+    )
 
     if not user_orders:
         return jsonify({"message": "No orders found"}), 404
