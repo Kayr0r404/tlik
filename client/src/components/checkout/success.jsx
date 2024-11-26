@@ -67,11 +67,9 @@ const styles = {
         padding: '20px',
         borderRadius: '8px',
         backgroundColor: '#fff',
-        // boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
         justifyContent: 'center',
         alignItems: 'center',
-        // height: 'vh',
-        backgroundColor: '#f4f4f9',
+        // backgroundColor: '#f4f4f9',
         textAlign: 'center',
         fontFamily: 'Arial, sans-serif'
     },

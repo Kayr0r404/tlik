@@ -11,10 +11,9 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=24)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 initialize_bcrypt(app)
 jwt = JWTManager(app)
-# app.register_blueprint(app_views)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.register_blueprint(app_views_bp)
