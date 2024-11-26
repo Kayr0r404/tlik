@@ -31,9 +31,9 @@ def get_cart():
 @jwt_required()
 def add_to_cart():
     user_identity = get_jwt_identity()
-    cart_items = request.get_json()
+    items_to_add = request.get_json()
 
-    if len(cart_items) == 0:
+    if len(items_to_add) == 0:
         return (
             jsonify({"msg": "Cart is Empty, server cannot create cart for the user"}),
             300,
@@ -41,16 +41,16 @@ def add_to_cart():
 
     # Fetch the user from the database using the user ID
     user = session.query(User).filter_by(id=user_identity["id"]).first()
-
+    # Query all cart items for the authenticated user
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    user_cart_exist = session.query(CartItem).filter_by(user_id=user.id)
+    # user_cart_exist = session.query(CartItem).filter_by(user_id=user.id)
 
     added_items = []
 
     try:
-        for item in cart_items:
+        for item in items_to_add:
             product = session.query(Product).filter_by(id=item["id"]).first()
 
             # Ensure the product exists before adding to cart
@@ -59,10 +59,25 @@ def add_to_cart():
                     jsonify({"error": f"Product with id {item['id']} not found"}),
                     404,
                 )
-            # Create a new CartItem object and add it to the session
-            cart_item = CartItem(quantity=item["quantity"], product=product, user=user)
-            storage.new(cart_item)
-            added_items.append({"product_id": product.id, "quantity": item["quantity"]})
+            cart_item = (
+                session.query(CartItem)
+                .filter_by(user_id=user_identity["id"], product_id=item["id"])
+                .first()
+            )
+
+            # if item already in cart increase quantity else add it
+            if cart_item:
+                cart_item.quantity += item["quantity"]
+            else:
+
+                # Create a new CartItem object and add it to the session
+                cart_item = CartItem(
+                    quantity=item["quantity"], product=product, user=user
+                )
+                storage.new(cart_item)
+                added_items.append(
+                    {"product_id": product.id, "quantity": item["quantity"]}
+                )
 
         # Commit the changes to the database
         storage.save()
