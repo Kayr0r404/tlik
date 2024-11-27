@@ -4,24 +4,23 @@ Welcome to **tlik**, a simple e-commerce website where you can shop for clothes 
 
 ## Technologies Used
 
-- **JavaScript (JS)**
 - **Python**
-- **HTML**
+- **React**
 - **CSS**
 
 ## Project Structure
 
 The project will be organized into several key directories:
 
-- `src/`: Contains the source code files.
-- `static/`: Houses static assets like images, CSS files, and client-side JavaScript.
-- `templates/`: Contains HTML templates used to render different pages of the website.
+- `server/`: Contains the source code for the backend of the application.
+- `client/`: Houses static assets like images, CSS files, and client-side JavaScript.
+
 
 ## Getting Started
 
 To get a local copy of this project up and running, follow these steps:
 
 1. **Clone the repository:**
-   ```bash
+   ```git
    git clone https://github.com/Kayr0r404/tlik.git
 
