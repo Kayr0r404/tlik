@@ -15,9 +15,11 @@ class Product(BaseModel, Base):
 
     category_name = Column(String(255), ForeignKey("categories.name"))
 
-    # Establish a relationship with the Category model (assuming it exists)
+    # Establish a relationship with the Category model
     category = relationship("Category", back_populates="products")
 
     # Define relationship with OrderItems
     cart_item = relationship(CartItem, back_populates="product")
+
+    wishlist = relationship(CartItem, back_populates="product")
     review = relationship("Review", back_populates="product")
