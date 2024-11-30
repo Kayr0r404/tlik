@@ -12,16 +12,14 @@ from flask_jwt_extended import (
 @app_views_bp.route("/cart", methods=["GET"])
 @jwt_required()
 def get_cart():
-    user_identity = get_jwt_identity()  # Retrieves the user's identity from the JWT
+    user_identity = get_jwt_identity()
     cart_items = (
         session.query(CartItem).filter_by(user_id=user_identity["id"]).all()
     )  # Fetch all items in the cart for the user
 
     if cart_items:
-        cart_data = [
-            item.to_dict() for item in cart_items
-        ]  # Convert each item to a dictionary
-        # product = session.query(Product).filter_by(id=cart_items["id"]).all()
+        cart_data = [item.to_dict() for item in cart_items]
+
         return jsonify(cart_data), 200
     else:
         return jsonify({"message": "Cart is empty"}), 201
@@ -39,13 +37,10 @@ def add_to_cart():
             300,
         )
 
-    # Fetch the user from the database using the user ID
     user = session.query(User).filter_by(id=user_identity["id"]).first()
     # Query all cart items for the authenticated user
     if not user:
         return jsonify({"error": "User not found"}), 404
-
-    # user_cart_exist = session.query(CartItem).filter_by(user_id=user.id)
 
     added_items = []
 
@@ -81,11 +76,10 @@ def add_to_cart():
         # Commit the changes to the database
         storage.save()
 
-        # Return the added items as a response
         return jsonify({"message": "Items added to cart", "items": added_items}), 200
 
     except Exception as e:
-        storage.rollback()
+        session.rollback()
         return (
             jsonify(
                 {

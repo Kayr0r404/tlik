@@ -2,17 +2,14 @@ from os import environ
 
 from models.products import Product
 from models.order import Order
-
-# from models.cart import Cart
 from models.categories import Category
 from models.user_address import UserAddres
 from models.reviews import Review
-from models.wishlists import WishList
+from models.wishlist import Wishlist
 from models.order_items import OrderItems
 from models.payments import Payment
 from models.shipping import Shipping
 from models.user_payment import UserPayment
-from models.wishlist_items import WisListItem
 from models.user import User
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -21,17 +18,15 @@ from models.base_model import Base
 tables = {
     "Product": Product,
     "User": User,
-    # "WisListItem": WisListItem,
-    # "UserPayment": UserPayment,
+    "UserPayment": UserPayment,
     "Shipping": Shipping,
-    # "Payment": Payment,
-    # "OrdeItems": OrderItems,
-    # "WishList": WishList,
+    "Payment": Payment,
+    "OrdeItems": OrderItems,
+    "Wishlist": Wishlist,
     "Review": Review,
-    # "UserAddres": UserAddres,
+    "UserAddres": UserAddres,
     "Category": Category,
     "Order": Order,
-    # "Cart": Cart,
 }
 
 
@@ -67,8 +62,6 @@ class DBStorage:
             if cls is None or cls is tables[clss] or cls == clss:
                 objs = self.__session.query(tables[clss]).all()
                 for obj in objs:
-                    # key = obj.id
-                    # new_dict[key] = obj
                     new_dict.append(obj)
         return new_dict
 

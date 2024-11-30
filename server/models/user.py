@@ -16,5 +16,6 @@ class User(BaseModel, Base):
 
     review = relationship("Review", back_populates="user")
     cart_item = relationship("CartItem", back_populates="user")
+    wishlist = relationship("Wishlist", back_populates="user")
     address = relationship("UserAddres", back_populates="user")
     order = relationship("Order", back_populates="user")
