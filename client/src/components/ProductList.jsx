@@ -40,12 +40,12 @@ function ProductList({ products }) {
                     <div className="dec">
                         <span className="name">{item.category_name}</span>
                         <h5>{item.title}</h5>
-                        {item.quantity === 0 ? <h3 className='sold-out'>SOLD OUT</h3> : ""}
+                        {item.quantity <= 0 ? <h3 className='sold-out'>SOLD OUT</h3> : ""}
                         <h4>
                             R {Math.floor(item.price)} <sup>{(item.price % 1).toFixed(2).split('.')[1]}</sup>
                         </h4>
                     </div>
-                    <button id="add-to-cart" disabled={item.quantity === 0 ? true : false} onClick={() => addToCart(item)}>Add to Cart</button>
+                    <button id="add-to-cart" disabled={item.quantity <= 0 ? true : false} onClick={() => addToCart(item)}>Add to Cart</button>
                 </div>
             ))}
         </div>
