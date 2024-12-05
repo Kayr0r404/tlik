@@ -57,6 +57,7 @@ export default function Men() {
                     {'<<'}
                 </button>
                 <Pagination
+                    currentPage={currentPage}
                     paginationNumbers={paginationNumbers}
                     onPageChange={handlePageChange}
                 />
