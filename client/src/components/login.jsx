@@ -35,6 +35,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)} 
               required 
             />
+            <Link to='/reset-password'><p style={{color: 'blue', padding: '0px'}}> Forgot password?</p></Link>
             <button type="submit">Login</button>
           </form>
           <p>Don’t have an account?</p>
