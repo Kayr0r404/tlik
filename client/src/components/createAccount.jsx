@@ -21,9 +21,18 @@ const CreateAccount = () => {
         }
 
         try {
-            await createProfile(email, password, last_name, first_name);
+            const profile = await createProfile(email, password, last_name, first_name);
+            console.log(profile);
+            if (!profile) {
+                setPassword("");
+                setPasswordConfirmation("");
+                setEmail("");
+                setLastName("");
+                setFirstName("");
+                navigate('/register');
+                return;
+            }
             navigate('/profile');
-            alert('Registered user successfully!');
         } catch (error) {
             console.error("Error registering", error);
             alert('Registration failed');

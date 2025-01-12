@@ -57,6 +57,7 @@ export default function Women() {
                     {'<<'}
                 </button>
                 <Pagination
+                    currentPage={currentPage}
                     paginationNumbers={paginationNumbers}
                     onPageChange={handlePageChange}
                 />
