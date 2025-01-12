@@ -5,6 +5,9 @@ from api.v1.views import app_views_bp
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import (
     create_access_token,
+    create_refresh_token,
+    get_jwt_identity,
+    jwt_required,
 )
 from datetime import datetime
 
@@ -66,7 +69,7 @@ def register_user():
     # Check if user already exists
     user_exist = session.query(User).filter_by(email=data["email"]).first()
     if user_exist:
-        return jsonify({"error": "User already exists"}), 409
+        return jsonify({"error": "User already exists"}), 422
 
     # Hash the user's password
     hashed_password = bcrypt.generate_password_hash(data["password"]).decode("utf-8")
@@ -102,6 +105,48 @@ def register_user():
         ),
         200,
     )
+
+
+@app_views_bp.route("/reset-password-link", methods=["GET"], strict_slashes=False)
+@jwt_required()
+def reset_password_link():
+    user_identity = get_jwt_identity()
+    user_email = request.get_json()
+
+    # verify if email exits in db
+    user = (
+        session.query(User).filter_by(id=user_identity["id"], email=user_email).first()
+    )
+
+    if not user:
+        return jsonify({"error": "Email does not exist"}), 401
+
+    return jsonify({"msg": "user verified"}), 200
+
+
+@app_views_bp.route("/reset-password", methods=["POST"], strict_slashes=False)
+@jwt_required()
+def reset_password():
+    user_identity = get_jwt_identity()
+    user_email = request.get_json()
+
+    # verify if email exits in db
+    user = (
+        session.query(User).filter_by(id=user_identity["id"], email=user_email).first()
+    )
+
+    if not user:
+        return jsonify({"error": "Email does not exist"}), 404
+
+    return jsonify({"msg": "user verified"}), 200
+
+
+@app_views_bp.route("/refresh", methods=["POST"], strict_slashes=False)
+@jwt_required(refresh=True)
+def refresh_token():
+    identity = get_jwt_identity()
+    access_token = create_access_token(identity=identity, fresh=False)
+    return jsonify(access_token=access_token)
 
 
 # Initialize Bcrypt with the application (ensure app instance has been passed)
