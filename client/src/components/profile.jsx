@@ -2,9 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from 'react-router-dom';
 import '../style/profile.css';
+import { TbLockCancel } from "react-icons/tb";
 
 const Profile = () => {
-  const { logout } = useContext(AuthContext);
+  const { logout, token } = useContext(AuthContext);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [orders, setOrders] = useState([]);
 
