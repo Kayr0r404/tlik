@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, } from 'react';
-import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 export const AuthContext = createContext();
@@ -10,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [responseStatus, setResponseStatus] = useState(-1);
+    const [token, setToken] = useState(null)
 
     // Function to log in the user
     const login = async (email, password) => {
@@ -34,12 +34,12 @@ export const AuthProvider = ({ children }) => {
                 // Update User state
                 setUser(data['user_data']);
                 setIsAuthenticated(true);
+                setToken(data['access_token'])
 
                 // Sync cart if it contains items
                 if (localStorage.getItem('cartItems') && localStorage.getItem('cartItems').length !== 0) {
                     await syncCartWithServer();
                 }
-                console.log(data)
             }
             console.log(isAuthenticated)
             console.log('Logged in successfully!');
@@ -51,23 +51,41 @@ export const AuthProvider = ({ children }) => {
     // Function to create a user profile
     const createProfile = async (newEmail, newPassword, last_name, first_name) => {
         try {
-            const res = await axios.post('/register', { email: newEmail, password: newPassword, first_name: first_name, last_name: last_name });
-			console.log(res.data);
-            const token = res.data['access_token'];
-            const userData = res.data['user_data'];
-
+            const res = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Fixed typo here
+                },
+                body: JSON.stringify({ email: newEmail, password: newPassword, first_name, last_name }),
+            });
+    
+            // Check for specific status code
+            if (res.status === 422) {
+                alert('User Already Exist');
+                return null;
+            }
+    
+            // Parse the JSON response
+            const resData = await res.json();
+    
+            // Extract token and user data
+            const token = resData.access_token;
+            const userData = resData.user_data;
+    
             // Save token and user data to localStorage
             localStorage.setItem('token', token);
             localStorage.setItem('userData', JSON.stringify(userData));
-            
+    
             // Set email and password for login, then call login
             setEmail(newEmail);
             setPassword(newPassword);
             await login(newEmail, newPassword);
+            return userData;
         } catch (error) {
             console.error("Error creating profile", error);
         }
     };
+    
 
     async function syncCartWithServer() {
         try {
@@ -141,7 +159,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ user, isAuthenticated, login, logout, email, setEmail,
-        password, setPassword, syncCartWithServer, createProfile, responseStatus, isTokenExpired}}>
+        password, setPassword, syncCartWithServer, createProfile, responseStatus, isTokenExpired, token}}>
             {children}
         </AuthContext.Provider>
     );
