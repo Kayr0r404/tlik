@@ -39,7 +39,11 @@ class DBStorage:
         self.__db = environ.get("TLIK_MYSQL_DB")
         self.__usr = environ.get("TLIK_MYSQL_USER")
         self.__host = environ.get("TLIK_MYSQL_HOST")
-        self.__port = environ.get("TLIK_MYSQL_PORT")
+        self.__port = environ.get("TLIK_MYSQL_PORT", "3001")
+        try:
+            port = int(self.__port)
+        except ValueError:
+            raise ValueError(f"Invalid port number: {self.__port}")
 
         self.__engine = create_engine(
             f"mysql+mysqldb://{self.__usr}:{self.__psswd}@{self.__host}:{self.__port}/{self.__db}",

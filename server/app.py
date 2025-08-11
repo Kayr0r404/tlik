@@ -27,4 +27,8 @@ def root():
 
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(
+        host="0.0.0.0",  # Or your specific host
+        port=int(os.getenv("TLIK_MYSQL_PORT", 5000)),  # Default to 5000 if not set
+        debug=True,
+    )
