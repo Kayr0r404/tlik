@@ -10,7 +10,7 @@ let [cartItems, setCartItems] = useState(localStorage.getItem('cartItems') ? JSO
 
 useEffect(() => {
     if (isAuthenticated) {
-      axios.get("/cart", {
+      axios.get(`${process.env.REACT_APP_API_URL}/cart`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -20,7 +20,7 @@ useEffect(() => {
   
         // Fetch product details for each cart item
         const productPromises = cartItems.map(item => 
-          axios.get(`/products/${item.product_id}`)
+          axios.get(`${process.env.REACT_APP_API_URL}/products/${item.product_id}`)
           .then(response => {
             response.data.quantity=item.quantity;
               return response.data;
@@ -53,7 +53,7 @@ useEffect(() => {
         // Update the quantity in the backend and then update the state
         try {
             if (isAuthenticated) { 
-                const response = await fetch(`/cart/${isItemInCart.id}`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/cart/${isItemInCart.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ useEffect(() => {
         }
     } else {
         if (isAuthenticated) {
-            const response = await fetch('/cart',{
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/cart`,{
                 method: 'POST',
                 headers: {
                         'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const removeFromCart = async (item) => {
     if (cartItem) {
       if (cartItem.quantity === 1) {
         if (isAuthenticated) {
-            await fetch(`/delete-cart/${item.id}`, {
+            await fetch(`${process.env.REACT_APP_API_URL}/delete-cart/${item.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const removeFromCart = async (item) => {
         setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
       } else {
         if (isAuthenticated) {
-            await fetch(`/cart/${item.id}`, {
+            await fetch(`${process.env.REACT_APP_API_URL}/cart/${item.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const deleteItemInCart = async (item) => {
     if (isAuthenticated && cartItem) {
       try {
         // Send DELETE request to the server
-        const response = await fetch(`/cart/${item.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/cart/${item.id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ const deleteItemInCart = async (item) => {
 const clearCart =async () => {
   console.log(isAuthenticated)
     if (isAuthenticated) {
-        await fetch('/delete-cart',{
+        await fetch(`${process.env.REACT_APP_API_URL}/delete-cart`,{
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',

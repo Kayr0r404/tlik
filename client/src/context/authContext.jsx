@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     // Function to log in the user
     const login = async (email, password) => {
         try {
-            const response = await fetch('/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     // Function to create a user profile
     const createProfile = async (newEmail, newPassword, last_name, first_name) => {
         try {
-            const res = await fetch('/register', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Fixed typo here
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
         try {
           const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       
-          const response = await fetch('/cart', {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/cart`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
