@@ -39,9 +39,10 @@ class DBStorage:
         self.__db = environ.get("TLIK_MYSQL_DB")
         self.__usr = environ.get("TLIK_MYSQL_USER")
         self.__host = environ.get("TLIK_MYSQL_HOST")
+	self.__port = environ.get("TLIK_MYSQL_PORT")
 
         self.__engine = create_engine(
-            f"mysql+mysqldb://{self.__usr}:{self.__psswd}@{self.__host}/{self.__db}",
+			f"mysql+mysqldb://{self.__usr}:{self.__psswd}@{self.__host}:{self.__port}/{self.__db}",
             pool_size=100,  # Increase the pool size
             max_overflow=50,  # Increase the overflow limit
             pool_timeout=60,  # Increase the timeout for getting a connection
