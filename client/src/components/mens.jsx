@@ -18,7 +18,7 @@ export default function Men() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`/Mens?page=${currentPage}`)
+        fetch(`${process.env.REACT_APP_API_URL}/Mens?page=${currentPage}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");

@@ -14,7 +14,6 @@ import MainFooter from './components/footer/mainFooter.jsx';
 import SuccesfullPayment from './components/checkout/success.jsx'
 import Profile from './components/profile.jsx';
 import OrderDetails from './components/orderDetails.jsx';
-import ResetPassword from './components/profile/resetPassword.jsx';
 
 function App() {
   return (
@@ -35,7 +34,6 @@ function App() {
         <Route path="success" element={<SuccesfullPayment />}/>
         <Route path='/profile' element={<Profile />}/>
         <Route path=':orderNum' element={<OrderDetails />} />
-        <Route path='reset-password' element={<ResetPassword />} />
       </Routes>
       </div>
       <footer><MainFooter /></footer>

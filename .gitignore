@@ -1,0 +1,17 @@
+# server
+.venv
+server/.env
+client/node_modules
+server/modules/prac_sqlachemy
+server/modules/main
+server/py 
+server/project
+server/add_projects
+*/__pycache__
+
+# client
+build
+node_modules
+package-lock.json
+.env
+

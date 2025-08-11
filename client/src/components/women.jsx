@@ -18,7 +18,7 @@ export default function Women() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`/Women?page=${currentPage}`)
+        fetch(`${process.env.REACT_APP_API_URL}/Women?page=${currentPage}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");

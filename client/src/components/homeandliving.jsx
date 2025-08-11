@@ -8,7 +8,7 @@ const HomeandLiving = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("/home_and_living")
+        fetch(`${process.env.REACT_APP_API_URL}/home_and_living`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

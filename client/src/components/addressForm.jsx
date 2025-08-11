@@ -18,7 +18,7 @@ const AddressForm = () => {
     useEffect(() => {
         const fetchAddress = async () => {
             try {
-                const response = await fetch('/get-address', {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/get-address`, {
                     method: 'GET',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('token')}`
@@ -69,7 +69,7 @@ const AddressForm = () => {
         // Only send the API request if there are changed fields
         if (Object.keys(updatedFields).length > 0) {
             try {
-                const response = await fetch(`/update-address/${addressId}`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/update-address/${addressId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

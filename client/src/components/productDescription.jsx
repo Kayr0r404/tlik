@@ -11,7 +11,7 @@ const ProductDescription = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("/products")
+        fetch(`${process.env.REACT_APP_API_URL}/products`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

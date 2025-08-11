@@ -9,7 +9,7 @@ const OrderDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/get-order/${orderNum}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/get-order/${orderNum}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`

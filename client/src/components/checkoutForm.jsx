@@ -21,7 +21,7 @@ function CheckoutForm() {
 
     useEffect(()=> {
         const getAddress = async () => {
-            const response = await fetch('/get-address', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/get-address`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ function CheckoutForm() {
         e.preventDefault();
 
         try {
-            const response = await fetch('/post-address', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/post-address`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

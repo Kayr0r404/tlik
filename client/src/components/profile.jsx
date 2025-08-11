@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from 'react-router-dom';
 import '../style/profile.css';
-import { TbLockCancel } from "react-icons/tb";
+
 
 const Profile = () => {
   const { logout, token } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/orders', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/orders`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`

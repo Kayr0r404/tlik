@@ -2,7 +2,7 @@ const PayButton = () => {
 
     const handlePayNow = async () => {
         try {
-            const response = await fetch('/create-checkout-session', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/create-checkout-session`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
