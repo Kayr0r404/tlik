@@ -14,6 +14,9 @@ from models.user import User
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.base_model import Base
+from dotenv import load_dotenv
+
+load_dotenv()
 
 tables = {
     "Product": Product,
