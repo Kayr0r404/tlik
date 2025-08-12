@@ -5,6 +5,131 @@ from models.user import User
 from models.categories import Category
 
 # from models.category import Category  # Assuming you have a Category model
+ladies_links = [
+    "https://i.ibb.co/ynG7yKkd/A100-WEG-9-ADF-300x300.png",
+    "https://i.ibb.co/h1gTxKBc/A168-WGG-1-ADF-300x300.png",
+    "https://i.ibb.co/JW6Ms67q/A168-WGG-1-BDF-300x300.png",
+    "https://i.ibb.co/9mg5LxRR/A168-XES-1-BDF-300x300.png",
+    "https://i.ibb.co/2f9x29b/A168-XESG-9-ADF-300x300.png",
+    "https://i.ibb.co/BHWMKjqF/A171-WE-1-ADF-300x300.jpg",
+    "https://i.ibb.co/0pbQq6BW/A171-WEG-9-ADF-300x300.jpg",
+    "https://i.ibb.co/k2cmFtVW/A171-WEMB-1-ADF-300x300.png",
+    "https://i.ibb.co/7x4Qt2D2/A178-WGA-1-ADF-1-300x300.png",
+    "https://i.ibb.co/6752ZgBm/A500-WA-1-DF-300x300.jpg",
+    "https://i.ibb.co/rKCKxP4D/A500-WA-7-DF-300x300.jpg",
+    "https://i.ibb.co/4wKjxj8H/A500-WGA-1-DF-1-300x300.png",
+    "https://i.ibb.co/1ttVwj1G/A500-WGA-9-DF-1-300x300.png",
+    "https://i.ibb.co/zHsdVH2Q/A700-WEVG-9-ADF-300x300.jpg",
+    "https://i.ibb.co/FLfX75C9/A700-WM-7-ADF-1-300x300.png",
+    "https://i.ibb.co/d0FrCHKn/ABL-100-WEG-9-ADF-300x300.jpg",
+    "https://i.ibb.co/vKBMfvr/ABL-100-WEGG-1-BDF-300x300.jpg",
+    "https://i.ibb.co/vgRwvBx/AQ-230-A-2-A1-MQYDF-300x300.png",
+    "https://i.ibb.co/hFtDxv7C/AQ-230-A-2-A2-MQYDF-300x300.png",
+    "https://i.ibb.co/r2TwTbmL/AQ-230-A-7-AMQYDF-300x300.png",
+    "https://i.ibb.co/fd9z3MWB/AQ230-A-7-B-300x300.jpg",
+    "https://i.ibb.co/d4mGB62M/AQ230-A-7-D-300x300.jpg",
+    "https://i.ibb.co/rKrgvfpq/AQ-230-GG-2-ADF-300x300.png",
+    "https://i.ibb.co/Y7nhw0jq/AQ-230-GG-9-ADF-300x300.png",
+    "https://i.ibb.co/VpvHX2QX/AQ-800-EG-9-ADF-300x300.jpg",
+    "https://i.ibb.co/b5xSKJw4/B640-WB-1-ADF-1-300x300.png",
+    "https://i.ibb.co/LD6jRWm2/B640-WC-5-ADF-1-300x300.jpg",
+    "https://i.ibb.co/hQVWTHM/B640-WGG-9-DF-300x300.jpg",
+    "https://i.ibb.co/0pfB1vtz/B650-WC-5-ADF-300x300.jpg",
+    "https://i.ibb.co/rR5hWCCQ/BGD-10-1-DR-300x300.jpg",
+    "https://i.ibb.co/XxbJrsRM/BGD-10-3-DR-300x300.jpg",
+    "https://i.ibb.co/RT3DxSTj/BGD-10-4-DR-300x300.jpg",
+    "https://i.ibb.co/mrgb5M99/BGD-10-K-4-DR-300x300.jpg",
+    "https://i.ibb.co/7tLZWMDK/CA53-W-1-Z-1-300x300.png",
+    "https://i.ibb.co/Z1FrWcSd/CA-500-WE-4-BDF-300x300.png",
+    "https://i.ibb.co/Xk5MwwxD/CA-500-WE-7-BDF-300x300.png",
+    "https://i.ibb.co/DgffxFWT/DW-5700-BBMB-1-DR-300x300.png",
+    "https://i.ibb.co/FkYXWvch/F-91-WB-2-A1-DF-300x300.jpg",
+    "https://i.ibb.co/93VJV8W6/F-91-WS-4-DF-300x300.jpg",
+    "https://i.ibb.co/1J6fzJJt/F-91-WS-7-DF-300x300.png",
+    "https://i.ibb.co/bMYx3VFt/F-91-WS-8-DF-300x300.jpg",
+    "https://i.ibb.co/pjMF9xBT/GA-2100-4-A2-300x300.jpg",
+    "https://i.ibb.co/YBrf1q0H/GMA-P2100-SG-4-ADR-300x300.jpg",
+    "https://i.ibb.co/wF2YQJgM/GMA-S2100-1-ADR-300x300.jpg",
+    "https://i.ibb.co/LqYCsXw/GMA-S2100-4-ADR-300x300.jpg",
+    "https://i.ibb.co/1tsKqMNB/GMA-S2100-7-ADR-300x300.png",
+    "https://i.ibb.co/LD2mwWK3/GMA-S2100-NC-4-ADR-300x300.jpg",
+    "https://i.ibb.co/s9WtMTvT/GMA-S2100-NC-8-ADR-300x300.jpg",
+    "https://i.ibb.co/x8j7DnRJ/GMD-S5600-BA-6-DR-300x300.png",
+    "https://i.ibb.co/27BSQ5D5/LQ-24-B-1-BDF-300x300.jpg",
+    "https://i.ibb.co/PvfxHTm2/LQ-24-B-2-BDF-300x300.jpg",
+    "https://i.ibb.co/84RwJbQv/LQ-24-B-3-BDF-300x300.jpg",
+    "https://i.ibb.co/tMbdxLH5/LQ-24-B-4-BDF-300x300.jpg",
+    "https://i.ibb.co/4ZvTCtSF/LQ-24-B-7-BDF-300x300.png",
+    "https://i.ibb.co/ns1YFq6Q/LRW-200-HS-2-EVDF-300x300.png",
+    "https://i.ibb.co/BHZ5bVCg/LTP-V002-D-1-B3-UDF-300x300.png",
+    "https://i.ibb.co/p6bwCg6x/LTP-V002-D-2-B3-UDF-300x300.png",
+    "https://i.ibb.co/60BVj5wz/LTP-V002-G-9-B3-UDF-300x300.png",
+    "https://i.ibb.co/zWXtW8f2/SHE-4562-M-2-AUDF-300x300.jpg",
+    "https://i.ibb.co/xKVNNjkm/SHE-4562-PGL-4-AUDF-300x300.jpg",
+]
+
+mans_links = [
+    "https://i.ibb.co/xKrkkgJn/AW-48-HE-1-AVUDF-300x300.jpg",
+    "https://i.ibb.co/rKBQHW9N/AW-49-HE-1-AVUDF-300x300.png",
+    "https://i.ibb.co/zTcTPcFn/F91-W-300x300.png",
+    "https://i.ibb.co/4R50cj3G/F-94-WA-8dg-300x300.png",
+    "https://i.ibb.co/Ld7S4gn6/F105-W-300x300.png",
+    "https://i.ibb.co/G46Ky06F/F200-W-1-AUDF-300x300.png",
+    "https://i.ibb.co/20YN5njH/F200-W-9-AUDF-300x300.jpg",
+    "https://i.ibb.co/2Ynqw9tN/F201-WA-1-AUDF-300x300.png",
+    "https://i.ibb.co/bgvNZcNV/F201-WA-9-AUDF-300x300.png",
+    "https://i.ibb.co/YBh4QQ58/MQ-24-UC-4-BDF-300x300.png",
+    "https://i.ibb.co/F4yxs9WY/MQ-24-UC-8-BDF-300x300.png",
+    "https://i.ibb.co/351T7J2d/MRW-200-H-1-B2-VDF-300x300.jpg",
+    "https://i.ibb.co/DPJnYt5b/MRW-200-H-1-BVDF-300x300.png",
+    "https://i.ibb.co/PG0dyFPW/MRW-200-H-2-B3-VDF-300x300.jpg",
+    "https://i.ibb.co/wZxQLFNC/MRW-200-H-2-BVDF-300x300.jpg",
+    "https://i.ibb.co/wNY2d3n0/MRW-200-H-3-BVDF-300x300.jpg",
+    "https://i.ibb.co/kVkcZhXw/MRW-200-H-4-BVDF-300x300.jpg",
+    "https://i.ibb.co/R4cppb71/MRW-200-H-7-BVDF-1-300x300.jpg",
+    "https://i.ibb.co/ZR1WJJ5S/MTP-V001-D-1-BUDF-300x300.png",
+    "https://i.ibb.co/twQXtqx7/MTP-V001-D-7-BUDF-300x300.png",
+    "https://i.ibb.co/dJVxVVw5/MTP-V001-GL-1-BUDF-300x300.png",
+    "https://i.ibb.co/Ps5QGSK5/MTP-V001-GL-7-BUDF-300x300.png",
+    "https://i.ibb.co/pvchBXD4/MTP-V001-GL-9-BUDF-300x300.png",
+    "https://i.ibb.co/FkZLY69y/MTP-V001-L-1-BUDF-300x300.png",
+    "https://i.ibb.co/JRs3Fp5D/MTP-V002-L-1-B3-UDF-300x300.png",
+    "https://i.ibb.co/WNH2VL77/MTP-V002-L-2-B3-UDF-300x300.jpg",
+    "https://i.ibb.co/7JXg134V/MTP-V002-L-5-B3-UDF-300x300.jpg",
+    "https://i.ibb.co/XR8sf5g/MTP-V004-L-1-BUDF-300x300.png",
+    "https://i.ibb.co/S71MXXgc/MTP-V005-D-1-B4-UDF-300x300.jpg",
+    "https://i.ibb.co/yFJ3Mf2P/MTP-V005-D-2-B4-UDF-300x300.jpg",
+    "https://i.ibb.co/7x1rKnBf/MTP-V005-D-7-B4-UDF-300x300.jpg",
+    "https://i.ibb.co/7J02tyrt/MW59-1-BVUDF-300x300.png",
+    "https://i.ibb.co/k6G205J1/MW59-1-EV-300x300.png",
+    "https://i.ibb.co/HT264fDF/MW-59-7-BUDF-300x300.png",
+    "https://i.ibb.co/N2jF68pP/MW59-7-E-300x300.png",
+    "https://i.ibb.co/35L1h3VY/MW-240-1-BVDF-300x300.png",
+    "https://i.ibb.co/NgNc6WNP/MW-240-1-E2-VDF-300x300.png",
+    "https://i.ibb.co/qLXPSNhf/MW-240-2-BV-300x300.png",
+    "https://i.ibb.co/TMbHWrdc/MW-240-3-BVDF-300x300.png",
+    "https://i.ibb.co/0pKW6RPC/MW-240-4-BVDF-300x300.png",
+    "https://i.ibb.co/QvDdft3D/MW-240-7-BVDF-300x300.png",
+    "https://i.ibb.co/gbQvt0v3/MW-600-F-1-AV-300x300.jpg",
+    "https://i.ibb.co/9m031Nz7/MW-600-F-2-AV-300x300.png",
+    "https://i.ibb.co/HmQ1Rhm/MW-600-F-7-AVDF-300x300.png",
+    "https://i.ibb.co/XZ0HYzvr/W-215-H-1-AVDF-1-300x300.png",
+    "https://i.ibb.co/ym2db99f/W-216-H-2-BVDF-300x300.jpg",
+    "https://i.ibb.co/gLVR76ks/W217-H-1-AV-300x300.png",
+    "https://i.ibb.co/xSF3P8p8/W-217-H-9-AVDF-1-300x300.png",
+    "https://i.ibb.co/5hJKf1X2/W-217-HM-5-AVDF-300x300.png",
+    "https://i.ibb.co/BSrbndr/W-217-HM-7-BVDF-300x300.png",
+    "https://i.ibb.co/Q3sYC4hG/W-217-HM-9-AVDF-300x300.png",
+    "https://i.ibb.co/fzC8f7ds/W-218-H-1-AVDF-300x300.png",
+    "https://i.ibb.co/nqZjVS52/W-218-H-2-AVDF-300x300.png",
+    "https://i.ibb.co/SDCtWjnq/W-218-H-3-AVDF-300x300.png",
+    "https://i.ibb.co/jkkkSkHc/W-218-H-4-B2-VDF-300x300.jpg",
+    "https://i.ibb.co/yBQLt3SJ/W-218-HM-5-BVDF-300x300.jpg",
+    "https://i.ibb.co/LD2L2X4v/W-218-HM-7-AVDF-300x300.jpg",
+    "https://i.ibb.co/FqzgKcHb/W-219-H-1-AVDF-300x300.png",
+    "https://i.ibb.co/kgZv7pCp/W-219-H-2-AVDF-300x300.jpg",
+    "https://i.ibb.co/S7yJmQZX/W-219-H-8-BVDF-300x300.png",
+]
 
 ladies = [
     {
@@ -1091,6 +1216,21 @@ mans = [
         "description": "Casio Analog MW-59-7BUDF\nSpecifications\nCase / bezel material: Resin\nResin Band\nResin Glass\n50-meter water resistance\nDate display\nRegular timekeeping\nAnalog: 3 hands (hour, minute, second)\nAccuracy: ±20 seconds per month\nApprox. battery life: 3 years on SR626SW\nSize of case : 40×36.1×8.9mm\nTotal weight : 23g",
     },
 ]
+
+for item in ladies:
+    for key, val in item.items():
+        for link in ladies_links:
+            l1 = val.split("/")
+            l2 = link.split("/")
+            if l1[-1] == l2[-1]:
+                item[key] = link
+for item in mans:
+    for key, val in item.items():
+        for link in mans_links:
+            l1 = val.split("/")
+            l2 = link.split("/")
+            if l1[-1] == l2[-1]:
+                item[key] = link
 
 
 products = []
